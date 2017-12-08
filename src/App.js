@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { booking } from './action-creators/action-creator.js';
 import './App.css';
+import { booking } from './action-creators/action-creator'
 
-class App extends Component {
+export default class App extends Component {
   componentDidUpdate(newProps){
     console.log("i should update with:", newProps);
   }
@@ -18,23 +16,11 @@ class App extends Component {
         <p className="App-intro">
           Words and more words
         </p>
-        <p> my special Text: {this.props.text}</p>
-        <button onClick={() => this.props.booking("hellowz")} >
+        <p> my special Text: {this.props.state.booking.text}</p>
+        <button onClick={() => this.props.dispatch(booking("cats"))} >
           change stuff
           </button>
       </div>
     );
   }
 }
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ booking }, dispatch)
-}
-
-function mapStateToProps(state) {
-  const { text } = state.booking;
-  return { text };
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
