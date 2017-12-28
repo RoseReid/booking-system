@@ -14,9 +14,8 @@ export default class App extends Component {
           <h1 className="App-title">Booking app</h1>
         </header>
         <p className="App-intro">
-          Words and more words
         </p>
-        <p> my special Text: {this.props.state.booking.text}</p>
+        <p>  Text Here: {this.props.state.booking.text}</p>
         <button onClick={() => this.props.dispatch(booking("cats"))} >
           change stuff
           </button>
