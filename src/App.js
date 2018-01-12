@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-import { booking } from './action-creators/action-creator'
+import { booking, booking1 } from './action-creators/action-creator'
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { userInputText: ''};
+    this.handleChange = this.handleChange.bind(this);    
+  }
+
+  handleChange(e) {
+    this.setState({
+      userInputText: e.target.value
+    })
+  }
+
   componentDidUpdate(newProps){
     console.log("i should update with:", newProps);
   }
@@ -19,6 +31,23 @@ export default class App extends Component {
         <button onClick={() => this.props.dispatch(booking("cats"))} >
           change stuff
           </button>
+
+      <div>
+        <textarea type="text" onChange={this.handleChange} value={this.state.userInputText}/>
+     
+        <button onClick={() => this.props.dispatch(booking1(this.state.userInputText))} >
+          change stuff2
+          </button>
+          <p>  Person has chosen to travel on December the : {this.props.state.booking.text1}</p>
+          </div>
+          <ul>
+          {this.props.state.booking.slots.map((slots) =>
+            <li key={slots.id}>
+              {slots.title}
+              {slots.content}
+            </li>
+          )}
+          </ul>
       </div>
     );
   }
