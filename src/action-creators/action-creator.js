@@ -1,5 +1,6 @@
 import { ADD_BOOKING } from './../reducers/booking.js';
 import { REMOVE_BOOKING } from './../reducers/booking.js';
+import { CHOOSE_MEOWZER } from './../reducers/booking.js';
 
 
 export function booking(text) {
@@ -19,3 +20,11 @@ export function booking1(text1) {
     text1: text1,
   }
 }
+
+  export function slots(catInput) {
+    console.log("got cat Input:", catInput);
+    return {
+      type: CHOOSE_MEOWZER,
+      id: catInput,
+      }
+  }

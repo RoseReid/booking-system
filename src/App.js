@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { booking, booking1 } from './action-creators/action-creator'
+import { booking, booking1, slots } from './action-creators/action-creator'
 
 export default class App extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class App extends Component {
         <button onClick={() => this.props.dispatch(booking("cats"))} >
           change stuff
           </button>
-
+ 
       <div>
         <textarea type="text" onChange={this.handleChange} value={this.state.userInputText}/>
      
@@ -40,15 +40,16 @@ export default class App extends Component {
           </button>
           <p>  Person has chosen to travel on December the : {this.props.state.booking.text1}</p>
           </div>
+       
           <ul>
-          {this.props.state.booking.slots.map((slots) =>
-            <li key={slots.id}>
-              {slots.title}
-              {slots.content}
+          {this.props.state.booking.slots.map((slot) =>
+            <li key={slot.id}>
+             <button onClick={ () => this.props.dispatch(slots(slot.id))}> {slot.name} </button>
             </li>
           )}
           </ul>
-      </div>
+          <p>{this.props.state.booking.selected && this.props.state.booking.selected.name}</p>     
+ </div>
     );
   }
 }
