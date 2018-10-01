@@ -17,22 +17,15 @@ const INITIAL_STATE = {
 const booking = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_BOOKING:
-      console.log("reducer got: ", action.text);
-      return (
-        Object.assign({}, state, { text: state.text === action.text ? '': action.text })
-      );
+      console.log("reducer got: ", action);
+      return { ...state, text: state.text === action.text ? '' : action.text };
 
     case REMOVE_BOOKING:
-    console.log("reducer got: ", action.text1);
-    return (
-      Object.assign({}, state, { text1: state.text1 === action.text1? 'reducer works': action.text1})
-    );
+      console.log("reducer got: ", action);
+      return { ...state, text1: state.text1 === action.text1? 'reducer works': action.text1 };
 
     case CHOOSE_MEOWZER:
-    return (
-      Object.assign({}, state, { selected: state.slots.find(findCat(action)) 
-     })
-    );
+      return { ...state, selected: state.slots.find(findCat(action)) };
     default:
       return state
   }
