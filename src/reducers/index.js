@@ -1,9 +1,6 @@
-import { combineReducers } from 'redux'
-import booking from './booking'
+import { combineReducers } from 'redux';
+import booking from './booking';
 
-
-const bookingApp = combineReducers({
+export default combineReducers({
   booking,
-})
-
-export default bookingApp
+});
